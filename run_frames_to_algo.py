@@ -6,13 +6,14 @@ import concurrent.futures
 frame_path = "C:\\Users\\eladtal\\PycharmProjects\\pythonProject1\\1MB"
 script_path = "C:\\Users\\eladtal\\PycharmProjects\\pythonProject1\\finalproject"
 
+#get the frames from the video and calculate the score for each frame
 def get_frame_grade(frame):
     cmd = [sys.executable, os.path.join(script_path, 'test.py'), '--mode', 'piqe', '--path', frame]
     result = subprocess.run(cmd, stdout=subprocess.PIPE)
     output = result.stdout.decode('utf-8')
     score = float(output.split("-----piqe score:")[1])
     return score
-
+#calculate the average score of all the frames
 def average_grades(frames):
     total_grade = 0
     with concurrent.futures.ThreadPoolExecutor() as executor:

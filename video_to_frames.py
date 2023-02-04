@@ -1,3 +1,4 @@
+#this code is used to convert video to frames
 import cv2
 vidcap = cv2.VideoCapture('1MB.mp4')
 success,image = vidcap.read()
