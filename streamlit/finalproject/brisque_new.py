@@ -1,9 +1,7 @@
 from brisque import BRISQUE
 from PIL import Image
 import numpy as np
-import concurrent.futures
-import statistics
-from niqe import niqe
+
 # Define the directory where the images are stored
 
 # Initialize the BRISQUE object
@@ -14,7 +12,7 @@ def compute_score(img_path):
     img = Image.open(img_path)
     img = np.array(img)
     score = brisq.score(img)
-    if score not in range(0, 101):
+    if score == np.nan:
         score = 100
         #print("Brisque returned nan")
     #print(f"{score:.2f}")
